@@ -1,4 +1,4 @@
-package com.example.northwind.dataAccess;
+package com.example.northwind.dataAccess.abstracts;
 
 import com.example.northwind.entities.concretes.Product;
 import org.springframework.data.jpa.repository.JpaRepository;
