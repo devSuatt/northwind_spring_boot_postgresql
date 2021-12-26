@@ -27,7 +27,6 @@ public class ProductsController {
     }
 
     @Autowired
-
     @GetMapping("")
     public String products() {
         return "PRODUCTS PAGE";
@@ -43,6 +42,11 @@ public class ProductsController {
     // entity katmanındaki product nesnesinin alanlarına map eder ve bir product nesnesine dönüştürür.
     public Result add(@RequestBody Product product) {
         return this.productService.add(product);
+    }
+
+    @GetMapping("/getByProductName")
+    public DataResult<Product> getByProductName(@RequestParam String productName) {
+        return this.productService.getByProductName(productName);
     }
 
 }
