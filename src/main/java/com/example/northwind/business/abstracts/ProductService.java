@@ -11,6 +11,11 @@ public interface ProductService {
     // getAll metodunun tipi List<Product> olmaması gerekir çünkü işlemin başarılı olup olmadığını bilemeyiz.
     // Bunun yerine işlem sonucunu da tutabilmek için DataResults tipinde bir nesne döneriz.
     DataResult<List<Product>> getAll();
+
+    DataResult<List<Product>> getAllSorted(String sortType);
+
+    DataResult<List<Product>> getAll(int pageNo, int pageSize);
+
     Result add(Product product);
 
     DataResult<Product> getByProductName(String productName);

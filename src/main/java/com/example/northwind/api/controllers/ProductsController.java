@@ -49,4 +49,27 @@ public class ProductsController {
         return this.productService.getByProductName(productName);
     }
 
+    @GetMapping("/getByProductNameAndCategoryId")
+    public DataResult<Product>
+    getByProductNameAndCategoryId(
+            @RequestParam("productName") String productName,
+            @RequestParam("categoryId") int categoryId) {
+        return this.productService.getByProductNameAndCategoryId(productName, categoryId);
+    }
+
+    @GetMapping("/getByProductNameContains")
+    public DataResult<List<Product>> getByProductNameContains(@RequestParam String productName) {
+        return this.productService.getByProductNameContains(productName);
+    }
+
+    @GetMapping("/getAllByPage")
+    public DataResult<List<Product>> getAll(@RequestParam int pageNo, @RequestParam int pageSize) {
+        return this.productService.getAll(pageNo, pageSize);
+    }
+
+    @GetMapping("/getAllSorted")
+    public DataResult<List<Product>> getAllSorted(@RequestParam("sortType") String sortType) {
+        return this.productService.getAllSorted(sortType);
+    }
+
 }

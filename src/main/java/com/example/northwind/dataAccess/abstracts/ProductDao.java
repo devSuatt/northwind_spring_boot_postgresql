@@ -11,15 +11,15 @@ public interface ProductDao extends JpaRepository<Product, Integer> {
     Product getByProductName(String productName);
     // // SELECT * FROM products WHERE product_name = xxx
 
-    Product getByProductNameAndCategory(String productName, int categoryId);
+    Product getByProductNameAndCategory_CategoryId(String productName, int categoryId);
     // Burada getBy keyword'ünü gördüğü anda otomatikmen bir sql sorgusu çalışıyor,
     // iki alan arasındaki And kelimesine göre de içinde and operatörü olan bir
     // where sql sorgusu çalışıyor. (SELECT ... WHERE X AND Y)
 
-    List<Product> getByProductNameOrCategory(String productName, int categoryId);
+    List<Product> getByProductNameOrCategory_CategoryId(String productName, int categoryId);
     // SELECT * FROM products WHERE product_name = xxx AND CATEGORY_ID = 1
 
-    List<Product> getByCategoryIn(List<Integer> categories);
+    List<Product> getByCategory_CategoryIdIn(List<Integer> categories);
     // SELECT * FROM products WHERE category_id in(1,2,3,4)
 
     List<Product> getByProductNameContains(String productName);
