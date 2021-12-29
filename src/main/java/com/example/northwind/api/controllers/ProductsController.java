@@ -3,6 +3,7 @@ package com.example.northwind.api.controllers;
 import com.example.northwind.business.abstracts.ProductService;
 import com.example.northwind.core.utilities.results.DataResult;
 import com.example.northwind.core.utilities.results.Result;
+import com.example.northwind.dto.ProductWithCategoryDto;
 import com.example.northwind.entities.concretes.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -70,6 +71,11 @@ public class ProductsController {
     @GetMapping("/getAllSorted")
     public DataResult<List<Product>> getAllSorted(@RequestParam("sortType") String sortType) {
         return this.productService.getAllSorted(sortType);
+    }
+
+    @GetMapping("/getProductWithCategoryDetails")
+    public DataResult<List<ProductWithCategoryDto>> getProductWithCategoryDetails() {
+        return this.productService.getProductWithCategoryDetails();
     }
 
 }

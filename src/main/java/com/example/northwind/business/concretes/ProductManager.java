@@ -3,6 +3,7 @@ package com.example.northwind.business.concretes;
 import com.example.northwind.business.abstracts.ProductService;
 import com.example.northwind.core.utilities.results.*;
 import com.example.northwind.dataAccess.abstracts.ProductDao;
+import com.example.northwind.dto.ProductWithCategoryDto;
 import com.example.northwind.entities.concretes.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
@@ -19,7 +20,7 @@ public class ProductManager implements ProductService {
 
     @Autowired
     // Autowired anotasyonu kulladığımızda, projeyi tarayıp
-    // productDao'ya karşılık gelen class'ı bulup yerleştiriyor. Injection işlemi yapmaya yarar.
+    // productDao'ya karşılık gelen class'ı bulup yerleştiriyor, D. Injection işlemi yapmaya yarar.
     public ProductManager(ProductDao productDao) {
         super();
         this.productDao = productDao;
@@ -29,7 +30,6 @@ public class ProductManager implements ProductService {
     public DataResult<List<Product>> getAll() {
         return new SuccessDataResult<List<Product>>
                 (this.productDao.findAll(), "Data listed.");
-
     }
 
     @Override
@@ -99,5 +99,11 @@ public class ProductManager implements ProductService {
     public DataResult<List<Product>> getByNameAndCategory(String productName, int categoryId) {
         return new SuccessDataResult<List<Product>>
                 (this.productDao.getByNameAndCategory(productName, categoryId), "Products listed.");
+    }
+
+    @Override
+    public DataResult<List<ProductWithCategoryDto>> getProductWithCategoryDetails() {
+        return new SuccessDataResult<List<ProductWithCategoryDto>>
+                (this.productDao.getProductWithCategoryDetails(), "Data listed.");
     }
 }
